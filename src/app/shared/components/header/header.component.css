@@ -1,0 +1,10 @@
+ul li{
+  list-style: none  ;
+}
+
+img{
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  padding: 8px 0 0 0 ;
+}
