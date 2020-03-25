@@ -8,3 +8,4 @@ ecute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 A responsive Dashboard application with material design and Flex layout. Charts used on the application are from highcharts ( using highcharts-angular module).
 
+Please visit the deployed application (deployed on GitHub Pages) through this link: [Dashboard](https://rksanjeev.github.io/dashboard/ )
