@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import {ChartDataService} from "../chart-data.service";
 
 @Component({
   selector: 'app-browser-widget',
@@ -9,63 +10,10 @@ import * as Highcharts from 'highcharts';
 export class Supplementary3Component implements OnInit {
   Highcharts = Highcharts;
   chartOptions = {};
-  constructor() { }
+  constructor(private dataService:ChartDataService) { }
 
   ngOnInit(): void {
-    this.chartOptions={
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-      },
-      title: {
-        text: 'Browser market shares in January, 2018'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-        point: {
-          valueSuffix: '%'
-        }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: false
-          },
-          showInLegend: true
-        }
-      },
-      series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-          name: 'Chrome',
-          y: 61.41,
-          sliced: true,
-          selected: true
-        }, {
-          name: 'Internet Explorer',
-          y: 11.84
-        }, {
-          name: 'Firefox',
-          y: 10.85
-        }, {
-          name: 'Edge',
-          y: 4.67
-        }, {
-          name: 'Safari',
-          y: 4.18
-        }, {
-          name: 'Other',
-          y: 7.05
-        }]
-      }]
-    }
+    this.chartOptions=this.dataService.getBrowserData();
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highstock';
-// @ts-ignore
-import * as dataJSON from '../../../../../assets/chartData/aapl-c.json';
+import {ChartDataService} from "../chart-data.service";
 
 @Component({
   selector: 'app-stock-widget',
@@ -11,29 +10,11 @@ import * as dataJSON from '../../../../../assets/chartData/aapl-c.json';
 export class Supplementary1Component implements OnInit {
   Highstocks = Highcharts;
   chartOptions={};
-  data: any = (dataJSON as any).default;
-  constructor() { }
+
+  constructor(private dataService:ChartDataService) { }
 
   ngOnInit(): void {
-    this.chartOptions={
-
-
-      rangeSelector: {
-        selected: 1
-      },
-
-      title: {
-        text: 'AAPL Stock Price'
-      },
-
-      series: [{
-        name: 'AAPL',
-        data: this.data,
-        tooltip: {
-          valueDecimals: 2
-        }
-      }]
-    };
+    this.chartOptions= this.dataService.getStockChart()
 
   }
 
